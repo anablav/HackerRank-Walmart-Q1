@@ -12,14 +12,14 @@ public class ScheduledMessageSender {
     @Autowired
     JmsTemplate jmsTemplate;
 
-    @Scheduled(cron = "0/5 0 * * * ?")
+    @Scheduled(cron = "*/5 * * * * *")
     public void sendingInfoMessage() {
         // send message `info` toAddress `info@example.com` at each 5 sec
         MessageObject message = new MessageObject("info@example.com", "info");
         jmsTemplate.convertAndSend("msgbox", message);
     }
 
-    @Scheduled(cron = "0/8 0 * * * ?")
+    @Scheduled(cron = "*/8 * * * * *")
     public void sendingTestMessage() {
         // send message `test` toAddress `test@example.com` at each 8 sec
         MessageObject message = new MessageObject("test@example.com", "test");
